@@ -1,0 +1,53 @@
+.stretch
+	position: absolute
+	top: 0
+	bottom: 0
+	right: 0
+	left: 0
+
+
+.text-overflow
+	white-space: nowrap
+	text-overflow: ellipsis
+	overflow: hidden
+
+
+
+.transition_all
+	transition: all .3s ease
+	will-change: transform
+
+.transition_opacity
+	transition: opacity .3s ease
+	will-change: opacity
+
+.transition_background
+	transition: background .3s ease
+	will-change: background
+
+.transition_color
+	transition: color .3s ease
+	will-change: color
+
+.transition_color_background
+	transition: color .3s ease, background .3s ease
+	will-change: color, background
+
+.transition_transform
+	transition: transform .3s ease
+	will-change: transform
+
+.tranisition_fill
+	transition: fill .3s ease
+	will-change: fill
+	
+$spaceamounts: (5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 75, 100) // Adjust this to include the pixel amounts you need.
+$sides: (top, bottom, left, right) // Leave this variable alone
+
+@each $space in $spaceamounts
+	@each $side in $sides
+		.m#{str-slice($side, 0, 1)}-#{$space}
+			margin-#{$side}: #{$space}px
+		
+		.p#{str-slice($side, 0, 1)}-#{$space}
+			padding-#{$side}: #{$space}px

@@ -1,0 +1,71 @@
+.news-slider
+    &:nth-child(1)
+        background-color: $c-biege
+        padding-bottom: 0 0 10px
+ 
+    &__preview
+        .swiper-slide
+            opacity: 0
+            transform: translateX(-50%)
+            transition: opacity 0s
+
+            &.swiper-slide-active
+                opacity: 1
+                transition: opacity 1.5s, transform 1.5s
+                transform: translateX(0px)
+        .card
+            display: grid 
+            grid-template-columns: repeat(2, 1fr)
+            grid-column-gap: 10px
+            height: 100%
+            
+            +sm
+                grid-template-columns: repeat(1, 1fr)
+                grid-auto-flow: dense
+                padding: 20px 0
+                display: flex
+                flex-direction: column-reverse
+
+            &__info
+                padding-bottom: 60px
+
+            &__title
+                font-size: 2.5em
+                font-family: $default-font
+
+            &__date
+                font-size: 1.5em
+
+            &__btn
+                position: absolute
+                bottom: 0
+
+    &__thumb
+        padding: 20px
+        +sm
+            //display: none
+
+        .swiper-slide-thumb-active
+            background-color: rgba($c-white, .5)
+            border-radius: $border-radius
+            transform: scale(1.1)
+        
+        .swiper-slide
+            opacity: 1
+            transition: all .7s
+            will-change: transform
+            
+        .card
+            .status-bar
+                position: absolute
+                bottom: 0
+                height: 2px
+                width: 100%
+                max-width: 0
+                background-color: $c-main
+                // transition: max-width
+                
+            &__title
+                font-weight: 600
+                font-family: $default-font
+

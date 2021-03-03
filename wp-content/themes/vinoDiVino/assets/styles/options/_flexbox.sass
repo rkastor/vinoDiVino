@@ -1,0 +1,56 @@
+.flex
+    display: flex
+
+    &--wrap
+        flex-wrap: wrap
+
+    // directions
+    &--column
+        flex-direction: column 
+    
+    &--row
+        flex-direction: row 
+
+    // aligment Vertical
+    &--align-center
+        align-items: center
+    
+    &--align-top
+        align-items: flex-start
+
+    &--align-bottom
+        align-items: flex-end
+
+    // aligment horizontal
+    &--justify-between
+        justify-content: space-between
+
+    &--justify-around
+        justify-content: space-around
+    
+    &--justify-center
+        justify-content: center
+    
+    &--justify-start
+        justify-content: flex-start
+    
+    &--justify-end
+        justify-content: flex-end
+
+    
+    &--center
+        justify-content: center
+        align-items: center
+        
+
+$columns: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+
+@each $i in $columns
+    .flex--#{nth($i, 1)}
+        > *
+            flex: 0 calc(100% / #{$i})
+            
+            +md
+                flex: 0 calc(100% / 2)
+            +sm
+                flex: 1 100%

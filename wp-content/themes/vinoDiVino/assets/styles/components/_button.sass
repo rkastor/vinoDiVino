@@ -1,0 +1,23 @@
+.btn
+    display: inline-block
+    padding: 10px 20px
+    min-width: 120px
+    background-color: $c-dark
+    color: $c-white
+    font-size: 20px
+    text-align: center
+    border-radius: 4px
+    cursor: pointer
+    transition: background-color .1s, transform .2s, color .15s
+
+    &--white
+        background-color: $c-white
+        color: $c-dark
+
+    & + .btn
+        margin-left: 20px
+
+    &:hover
+        transform: translateY(-5px)
+        background-color: rgba($c-main, .4)
+        color: $c-white

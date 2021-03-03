@@ -1,0 +1,170 @@
+.circle
+	border-radius: 50%
+
+.square
+	&::after
+		content: ""
+		display: block
+		padding-bottom: 100%
+
+.rectangle 
+	width: 100%
+	// +rectangle($w,$h)
+
+.block
+	display: block !important
+
+.w-100
+	width: 100%
+
+[class*="max-"]
+	width: 100%
+
+.max-1100
+	max-width: 1100px
+
+.max-1040
+	max-width: 1040px
+
+.max-600
+	max-width: 600px
+
+.max-700
+	max-width: 700px
+
+	+r(700)
+		padding-left: 15px
+		padding-right: 15px
+
+.max-560
+	max-width: 560px
+
+.max-300
+	max-width: 300px
+
+.max-250
+	max-width: 255px
+
+button, input
+	border: none
+
+.block-center
+	margin-left: auto
+	margin-right: auto
+
+.text-center
+	text-align: center
+
+.text-left
+	text-align: left
+
+.text-right
+	text-align: right
+
+.text-uppercase
+	text-transform: uppercase
+
+.form-group
+	position: relative
+	margin-bottom: 20px
+	// &:not(:last-child)
+	
+.box-shadow
+	box-shadow: $box-shadow
+	&--big
+		box-shadow: $box-shadow-big
+		
+
+.rel
+	position: relative
+	
+.opened-modal
+	z-index: $z-modal
+	
+.modal__shadow
+	position: absolute
+	top: 0
+	left: 0
+	width: 100vw
+	height: 100vh
+	background-color: rgba($c-dark, .95)
+	cursor: pointer
+	
+	&--main
+		display: none
+		z-index: $z-header - 1
+
+
+.list
+	margin-top: 40px
+
+	&__item
+		list-style-type: none
+		margin-bottom: 30px
+		padding-left: 20px
+		position: relative
+		overflow: hidden
+
+		&::before
+			position: absolute
+			left: 0
+			top: 4px
+			content: ''
+			display: block
+			line-height: inherit
+			size: 8px
+			background-color: currentColor
+			border-radius: 50%
+
+			+lg
+				top: 8px
+
+			+sm
+				top: 4px
+			+mob-hor
+				top: 4px
+
+	&--separator
+		margin-top: 0
+		> li
+			list-style-type: none
+			padding-left: 0
+			+sm
+				font-weight: 300
+				margin-bottom: 0
+			+mob-hor
+				font-weight: 300
+				margin-bottom: 0
+			&::before
+				display: none
+
+			&:not(:last-child)
+				margin-bottom: 20px
+				+sm
+					margin-bottom: 5px
+				+mob-hor
+					margin-bottom: 5px
+				&::after
+					content: '• • •'
+					display: block
+					margin-left: auto
+					margin-right: auto
+					margin-top: 20px
+					font-size: 40px
+    				letter-spacing: -0.08em
+					+sm
+						font-size: 20px
+						margin-top: 5px
+					+mob-hor
+						font-size: 20px
+						margin-top: 5px
+						
+$post-format: video, gallery, chat
+
+@each $i in $post-format
+	.post-format--#{nth($i, 1)}
+		mask: url("../svg/"+ $i +".svg")
+		mask-size: contain
+		mask-position: center
+		mask-repeat: no-repeat
+		background-color: $c-main

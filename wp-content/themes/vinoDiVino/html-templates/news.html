@@ -1,0 +1,21 @@
+{% set page_title = "News" %}
+{% set main_class = "news" %}
+
+{% extends "./partials/layout.html" %}
+
+{# start of page content #}
+{% block content %}
+  
+  <div class="news__tabs tabs">
+    <div class="container grid grid-2">
+      <a href="" class="tabs__item">Gallery</a>
+      <a href="" class="tabs__item">Gallery</a>
+    </div>
+  </div>
+
+  <div class="news-list">
+    {% include "./home-sections/_news&ivents.html" %}
+
+  </div>
+
+{% endblock %}

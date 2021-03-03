@@ -1,0 +1,74 @@
+.news-grid
+
+    &--big-image
+
+        .grid
+            grid-template-columns: 1fr 1fr 1fr 1fr
+            grid-column-gap: 20px
+            grid-row-gap: 16px
+            +md
+                grid-template-columns: 1fr 1fr
+        
+            +sm
+                grid-template-columns: repeat(2, 1fr)
+                grid-column-gap: 10px
+                grid-row-gap: 10px
+
+            // &__group
+            //     display: flex
+            //     flex-wrap: wrap
+            //     justify-content: space-between
+            .card
+                margin-top: 16px
+                padding: 0
+                height: 100%
+                transition: transform .2s, box-shadow .3s
+                background-color: $c-white
+                box-shadow: 0 5px 10px 0 rgba($c-black, .05)
+    
+                &:hover
+                    transform: translateY(-5px)
+                    box-shadow: 0 10px 10px 0 rgba($c-black, .1)
+                    .card__post-format
+                        //transform: scale(1.2)
+                        transition-delay: .5s
+                        animation: scaling 1s ease-in-out infinite
+
+                &:nth-child(1),
+                &:nth-child(6n + 1)
+                    grid-column: 1 / span 2
+                    grid-row: auto / span 2
+                    +md
+                        grid-template-columns: 2fr 3fr
+                        grid-gap: 0
+                        align-items: start
+                    +sm
+                        grid-column: 1
+                        grid-row: 1
+                    .card__post-format
+                        size: 30px
+                &:nth-child(6n):last-child:not(:first-child),
+                &:nth-child(6n)
+                    grid-column: 3 / span 2
+                    grid-row: 2 / span 2
+                    +md
+                        grid-template-columns: 2fr 3fr
+                        grid-gap: 0
+                        align-items: start
+                    +sm
+                        grid-column: 1
+                        grid-row: 1
+
+                &__thumb
+
+                &__info
+                    padding: 16px 16px 16px
+                    +md
+                        padding: 10px
+
+                &__date
+                    color: rgba($c-dark, .5)
+                // &:nth-child(even)
+                //     flex-direction: row-reverse
+                //     .card:nth-child(1)
+                //         order: 2
