@@ -1,3 +1,5 @@
+const { parallel, series } = require('gulp');
+
 /******************************Пути*************************************/
 var npmDir = 'node_modules',
     main_src = 'assets',
@@ -132,12 +134,12 @@ gulp.task('sass', function () {
 });
 
 /**************************Сжатие CSS*******************************************/
-gulp.task('css-main', ['sass'], function () {
+gulp.task('css-main', gulp.parallel('sass', function () {
     return gulp.src(css_dist + '/style.css')
         .pipe(cssnano())
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest(css_dist));
-});
+}));
 
 gulp.task("css-libs", function () {
     return gulp.src([
@@ -156,7 +158,7 @@ gulp.task('scripts_libs', function () {
         npmDir + '/jquery/dist/jquery.min.js',
         npmDir + '/swiper/dist/js/swiper.min.js',
         npmDir + '/aos/dist/aos.js',
-        main_src + '/mask.js',
+        js_src + '/mask.js',
     ])
         .pipe(plumber())
         .pipe(concat('libs.min.js'))
@@ -191,7 +193,7 @@ gulp.task('browser-sync', function () {
         // server: {
         //     baseDir: main_dist
         // },
-        notify: true,
+        // notify: true,
         watchEvents : [ 'change', 'add', 'unlink', 'addDir', 'unlinkDir' ],
         files: [
             {
@@ -202,11 +204,18 @@ gulp.task('browser-sync', function () {
                     img_src + '/**',
                 ],
                 fn:    function (event, file) {
-                    this.reload()
+                    // this.reload()
                 },
             },
         ],
     });
+
+    gulp.watch([css_src + '/**/*.{sass,scss}'], gulp.parallel('sass'));
+    gulp.watch([img_src + "/**/*"], gulp.parallel('img')).on("add addDir", browserSync.reload);
+    gulp.watch([js_src + '/**/*.js'], gulp.parallel('scripts_main')).on("change add", browserSync.stream);
+    gulp.watch([font_src], gulp.parallel('fonts')).on("change create", browserSync.reload);
+    gulp.watch([svg_src + '/**/*.svg'], gulp.parallel('svgo')).on("change", browserSync.reload);
+    // gulp.watch([html_src + "/**/*"], gulp.parallel('nunjucks-render']).on("change", browserSync.reload);
 });
 
 
@@ -292,17 +301,9 @@ function log(error) {
 
 
 /*************************************WATCH************************************/
-gulp.task('watch', ['browser-sync', 'sass', 'img', 'css-libs', 'scripts_main', 'scripts_libs', 'fonts', 'svgo', 'css-main'], function() {
+gulp.task('watch', gulp.parallel('browser-sync', 'sass', 'img', 'css-libs', 'scripts_main', 'scripts_libs', 'fonts', 'svgo', 'css-main'));
 
-    gulp.watch([css_src + '/**/*.{sass,scss}'], ['sass']);
-    gulp.watch([img_src + "/**/*"], ['img']).on("add addDir", browserSync.reload);
-    gulp.watch([js_src + '/**/*.js'], ['scripts_main']).on("change add", browserSync.stream);
-    gulp.watch([font_src], ['fonts']).on("change create", browserSync.reload);
-    gulp.watch([svg_src + '/**/*.svg'], ['svgo']).on("change", browserSync.reload);
-    // gulp.watch([html_src + "/**/*"], ['nunjucks-render']).on("change", browserSync.reload);
-});
-
-gulp.task('default', ['watch']);
+gulp.task('default', gulp.series('watch'));
 
 /*************************************СБОРКА***********************************/
-gulp.task('build', ['clean', 'img', 'scripts_main', 'scripts_libs', 'nunjucks-render', 'css-libs', 'css-main', 'fonts', 'svgo']);
+gulp.task('build', gulp.series('clean', 'sass', 'img', 'css-libs', 'scripts_main', 'scripts_libs', 'fonts', 'svgo', 'css-main'));
