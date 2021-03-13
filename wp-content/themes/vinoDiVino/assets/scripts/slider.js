@@ -1,3 +1,6 @@
+    // var lazy   = true,
+    //     fade   = false,
+    //     effect = 'fade';
     if ($('.gallery__preview').length > 0) {
         var counts = 6,
             lazy   = true,
@@ -34,7 +37,7 @@
         // effect: 'fade'
     });
 
-    var newsPreview = new Swiper('.news-slider__preview, .gallery__preview, .slider-top_container', {
+    var newsPreview = new Swiper('.slider-top', {
         speed: 1500,
         loop: true,
         loopFillGroupWithBlank: true,
@@ -53,10 +56,10 @@
         thumbs: {
             swiper: newsThumbs
         },
-        pagination: {
-            el: '.swiper-pagination',
-            type: 'fraction',
-        },
+        // pagination: {
+        //     el: '.swiper-pagination',
+        //     type: 'fraction',
+        // },
         breakpoints: {
             // 570: {
             //     thumbs: {

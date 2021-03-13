@@ -65,7 +65,7 @@ $(function(){
             $('.modal__shadow--main').fadeToggle(400);
         });
         $(document).on('click', '.header__burger.toggled', function() {
-              $('.header, .main section, .footer').css('padding-right', 0);
+            $('.header, .main section, .footer').css('padding-right', 0);
         });
         // $('.modal__shadow--main').click(function() {
         //     $(this).fadeToggle(400);

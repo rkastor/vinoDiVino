@@ -15,11 +15,16 @@ body
     // line-height: 1.2em
     font-weight: 400
     font-family: $default-font
+    // font-style: italic
     color: $c-dark
     background: $c-light
     overflow-x: hidden
     width: 100%
     max-width: 100%
+    // background: linear-gradient(90deg, $c-light ($dot-space - $dot-size), transparent  1%) center,linear-gradient($c-light ($dot-space - $dot-size), #c8aaaa 1%) center,$dot-color
+    // background-size: $dot-space $dot-space
+    background-image: radial-gradient($c-biege-dark 1px, transparent 0)
+    background-size: 50px 50px
 
     +selection
         color: $c-main
@@ -125,6 +130,11 @@ img
         text-transform: uppercase
         color: $c-main
 
+.logo
+    transition: all .3s ease-in-out
+    &:hover
+        transform: scale(1.05) translateZ(0)
+
 .scroll-next
     position: absolute
     bottom: 20px
@@ -167,6 +177,8 @@ img
         +mob-hor
             font-size: 12px
 
+.active-color
+    color: $c-main
 
 .blur
     filter: blur(50px)

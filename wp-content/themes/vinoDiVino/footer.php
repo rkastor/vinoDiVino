@@ -2,8 +2,8 @@
 
     <footer class="footer">
       <div class="container">
-        <div class="grid">
-          <div class="col">
+        <div class="flex flex--wrap flex--justify-between">
+          <div class="footer__item footer__item--logo">
             <a href="/">
               <?php
                         $custom_logo_id = get_theme_mod( 'custom_logo' );
@@ -15,9 +15,8 @@
                         endif;
                     ?>
             </a>
-            <a href="/" class="site-name"><?php bloginfo('name') ?></a>
           </div>
-          <div class="col">
+          <div class="footer__item footer__item--menu flex--auto">
 
             <?php wp_nav_menu( array(
                   'menu'            => 'main',

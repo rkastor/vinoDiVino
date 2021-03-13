@@ -41,7 +41,7 @@ function new_post_types() {
 		'labels'              => array(
 			'name'          => 'Слайды',
 			'singular_name' => 'Слайд',
-			'menu_name'     => 'Слайдер',
+			'menu_name'     => 'Слайдер на главной',
 			'all_items'     => 'Все слайды',
 			'add_new'       => 'Добавить слайд',
 			'add_new_item'  => 'Добавить новый слайд',

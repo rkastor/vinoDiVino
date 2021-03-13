@@ -1,0 +1,39 @@
+.slider-top
+
+    &__item
+        // @extend .pattern
+        // @extend .pattern--lines
+        @extend .flex
+        @extend .flex--wrap
+        @extend .flex--align-center
+        position: relative
+        min-height: 100vh
+        
+        &::before
+            content: ''
+            display: block
+            position: absolute
+            left: 0
+            top: 0
+            width: 100%
+            height: 100%
+            background: $sliderGradient
+
+
+        .slider-item
+
+            &__poster
+                position: absolute
+                left: 0
+                top: 0
+                height: 100%
+                width: 100%
+                filter: brightness(0.7) contrast(1.2) grayscale(0.25) sepia(0.01) saturate(1.3)
+                z-index: -1;
+
+            &__content
+                color: $c-white
+                z-index: $z-element
+
+            &__content-title
+                font-family: $head-font

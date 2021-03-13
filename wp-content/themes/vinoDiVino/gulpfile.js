@@ -128,7 +128,7 @@ gulp.task('sass', function () {
         .pipe(postcss(processors))
         .pipe(sourcemaps.init())
         // .pipe(sourcemaps.write('./'))
-        .pipe(concat('style.css'))
+        .pipe(concat('style.min.css'))
         .pipe(gulp.dest(css_dist))
         .pipe(browserSync.stream());
 });
@@ -301,9 +301,9 @@ function log(error) {
 
 
 /*************************************WATCH************************************/
-gulp.task('watch', gulp.parallel('browser-sync', 'sass', 'img', 'css-libs', 'scripts_main', 'scripts_libs', 'fonts', 'svgo', 'css-main'));
+gulp.task('watch', gulp.parallel('browser-sync', 'sass', 'img', 'css-libs', 'scripts_main', 'scripts_libs', 'fonts', 'svgo'));
 
 gulp.task('default', gulp.series('watch'));
 
 /*************************************СБОРКА***********************************/
-gulp.task('build', gulp.series('clean', 'sass', 'img', 'css-libs', 'scripts_main', 'scripts_libs', 'fonts', 'svgo', 'css-main'));
+gulp.task('build', gulp.series('clean', 'sass', 'img', 'css-libs', 'scripts_main', 'scripts_libs', 'fonts', 'svgo'));

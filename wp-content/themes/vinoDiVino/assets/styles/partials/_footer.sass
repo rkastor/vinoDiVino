@@ -1,50 +1,12 @@
 .footer
-    padding: 40px 0
-    background-color: $c-biege-dark
+    padding: 20px 0
+    background: $c-dark
+    color: $c-white
 
-    .grid
-        grid-template-columns: repeat(3, 1fr)
-        text-align: center
 
-        .col
-            display: flex
-            justify-self: center
-            align-self: center
-            flex-direction: column
-            justify-content: flex-start
-
-    a, .site-name
-        font-family: $default-font
-        font-weight: 600
-        color: $c-dark
-        &:hover
-            text-decoration: underline
-
-    .site-name
-        font-size: 28px
-        text-transform: uppercase
-        max-width: 250px
-        display: inline-block
-        @extend .block-center
-
-    .nav__menu
-        display: grid
-        justify-content: space-around
-        grid-template-columns: repeat(2, 1fr)
-        grid-template-rows: repeat(4, 1fr)
-        grid-column-gap: 80px
-
-        li
-            margin: 20px 0
-            a
-                font-family: $head-font
-
-    .auth-btns
-        display: grid
-        grid-row-gap: 20px
-        text-transform: uppercase
-        font-weight: 600
-
-        .btn
-            margin-left: 0
-            justify-self: center
+    &__item
+        &--logo
+            img
+                max-height: 80px
+        &--menu
+            @extend .header__nav

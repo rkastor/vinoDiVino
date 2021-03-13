@@ -34,7 +34,7 @@
 
 		// параметры: $id, $title, $callback, $page, $section, $args
 		add_settings_field('primer_field1', 'Телефон 1', 'fill_primer_field1', 'options', 'section_1' );
-		// add_settings_field('primer_field2', 'Телефон 2', 'fill_primer_field2', 'options', 'section_1' );
+		add_settings_field('primer_field2', 'Телефон 2', 'fill_primer_field2', 'options', 'section_1' );
 		// add_settings_field('primer_field3', 'Телефон 3', 'fill_primer_field3', 'options', 'section_1' );
 		add_settings_field('primer_field4', 'Email', 'fill_primer_field4', 'options', 'section_1' );
 		add_settings_field('primer_field5', 'Адрес', 'fill_primer_field5', 'options', 'section_1' );
@@ -53,7 +53,7 @@
 		$val = get_option('settings');
 		$val = $val ? $val['phone1'] : null;
 		?>
-		<input type="text" name="settings[phone1]" value="<?php echo esc_attr( $val ) ?>" placeholder="+380 (XX) XXX XX XX" />
+		<input type="text" name="settings[phone1]" value="<?php echo esc_attr( $val ) ?>" maxlength="20" placeholder="+380 (XX) XXX XX XX" />
 		<?php
 	}
 	## Заполняем опцию 2
@@ -61,7 +61,7 @@
 		$val = get_option('settings');
 		$val = $val ? $val['phone2'] : null;
 		?>
-		<input type="text" name="settings[phone2]" value="<?php echo esc_attr( $val ) ?>" placeholder="+380 (XX) XXX XX XX" />
+		<input type="text" name="settings[phone2]" value="<?php echo esc_attr( $val ) ?>" maxlength="20" placeholder="+380 (XX) XXX XX XX" />
 		<?php
 	}
 	## Заполняем опцию 3
